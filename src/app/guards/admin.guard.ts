@@ -5,6 +5,6 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements  {
-  
+export class AdminGuard {
+
 }
