@@ -12,6 +12,7 @@ import { MembersModule } from './members/members.module';
 import { LoginComponent } from './session/login/login.component';
 import { RegisterComponent } from './session/register/register.component';
 import { PassRecoveryComponent } from './session/pass-recovery/pass-recovery.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PassRecoveryComponent } from './session/pass-recovery/pass-recovery.com
     BrowserModule,
     AppRoutingModule,
     AdminModule,
-    MembersModule
+    MembersModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
