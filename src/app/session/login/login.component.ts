@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 public login() {
 
   // CONSEGUIMOS DATOS DEL USUARIO IDENTIFICADO
-  this.mService.loginUsuario(this.member).subscribe(
+  this.mService.loginMember(this.member).subscribe(
 
     response => {
 
@@ -37,7 +37,7 @@ public login() {
 
       if (!this.identity._id) {
 
-        alert('El usuario no esta identificado correctamente');
+        alert('El miembro no esta identificado correctamente');
 
       } else {
 
@@ -45,7 +45,7 @@ public login() {
         localStorage.setItem('identity', JSON.stringify(identity));
 
         // CONSEGUIMOS TOKEN PARA ENVIAR EN PETICIONES HTTP
-        this.mService.loginUsuario(this.member, 'true').subscribe (
+        this.mService.loginMember(this.member, 'true').subscribe (
 
           resp => {
 

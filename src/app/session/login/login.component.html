@@ -1,6 +1,6 @@
 <!---------------------------
 ------ SECCION LOGIN -------
----------------------------->
+--------------------------
 <section class="section-login d-none d-sm-block">
 
   <div class="row">
@@ -48,7 +48,7 @@
 
           </div>
 
-          <button (click)="login()" class="btn btn-outline-primary mt-4">Ingresar</button>
+          <a (click)="login()" class="btn btn-transparent-deep-pink btn-small sm-margin-two-all">Ingresar</a>
 
         </form>
 
@@ -59,3 +59,49 @@
   </div>
 
 </section>
+-->
+<!-- start feature section -->
+<section class="p-0 wow fadeIn bg-light-gray full-height">
+    <div class="container-fluid height-100">
+        <div class="row height-100">
+            <div class="col-12 col-lg-6 cover-background wow fadeInLeft md-height-450px"  style="background-image:url('assets/media/login-bg.jpg');"><div class="opacity-extra-medium bg-black">
+
+            </div></div>
+            <div class="col-12 col-lg-6 padding-five-all md-padding-ten-all sm-padding-50px-tb md-padding-15px-lr wow fadeInRight ">
+                <div class="row m-0">
+                  <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase">Inicia Sesión</h5>
+                  <h5>Ingrese con su email y contraseña</h5>
+
+                  <form #loginForm="ngForm" class="mt-5">
+
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email" #email="ngModel" name="email" [(ngModel)]="usuario.email">
+                    </div>
+
+                    <div class="form-group mt-4">
+                      <input type="password" class="form-control" placeholder="Contraseña" #password="ngModel" name="password" [(ngModel)]="usuario.password">
+                    </div>
+
+                    <div class="row">
+
+                      <a routerLink="/recuperar-clave"> ¿Olvidaste tu contraseña? </a>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                      <div class="alert alert-danger" role="alert" *ngIf="error != null">
+                        {{error}}
+                      </div>
+
+                    </div>
+
+                    <a (click)="login()" class="btn btn-transparent-deep-pink btn-small sm-margin-two-all">Ingresar</a>
+
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end feature section -->

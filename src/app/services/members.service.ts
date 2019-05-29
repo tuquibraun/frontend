@@ -18,9 +18,9 @@ export class MembersService {
 
   }
 
-  getUsuarios(usuario) {
+  getMembers(member) {
 
-    if (usuario != null) {
+    if (member != null) {
 /*
       const params = JSON.stringify(membresia);
 
@@ -43,15 +43,15 @@ export class MembersService {
 
   }
 
-  loginUsuario(userLogin, gethash = null) {
+  loginMember(memberLogin, gethash = null) {
 
     if (gethash != null) {
 
-      userLogin.gethash = gethash;
+      memberLogin.gethash = gethash;
 
     }
 
-    const params = JSON.stringify(userLogin);
+    const params = JSON.stringify(memberLogin);
 
     const headers = new Headers({'Content-Type': 'application/json'});
 
@@ -60,9 +60,9 @@ export class MembersService {
 
   }
 
-  registerUsuario(userRegister) {
+  registerMember(memberRegister) {
 
-    const params = JSON.stringify(userRegister);
+    const params = JSON.stringify(memberRegister);
 
     const headers = new Headers({'Content-Type': 'application/json'});
 
@@ -71,16 +71,16 @@ export class MembersService {
 
   }
 
-  actualizarUsuario(userActualizar) {
+  updateMember(memberUpdate) {
 
-    const params = JSON.stringify(userActualizar);
+    const params = JSON.stringify(memberUpdate);
 
     const headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     });
 
-    return this.http.post(this.url + 'actualizar-usuario/' + userActualizar._id,
+    return this.http.post(this.url + 'actualizar-usuario/' + memberUpdate._id,
     params, {headers: headers})
                     .map(res => res.json());
 
