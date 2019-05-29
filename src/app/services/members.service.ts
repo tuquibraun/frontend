@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './global';
 
 @Injectable({
@@ -81,6 +83,7 @@ export class MembersService {
     });
 
     return this.http.post(this.url + 'actualizar-usuario/' + memberUpdate._id,
+
     params, {headers: headers})
                     .map(res => res.json());
 

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MembersService } from '../../services/members.service';
+import { OfficeReservationComponent } from '../office-reservation/office-reservation.component';
+import { MatDialog } from '@angular/material';
+import { ReunionReservationComponent } from '../reunion-reservation/reunion-reservation.component';
+import { ChangeMembershipComponent } from '../change-membership/change-membership.component';
 
 @Component({
   selector: 'app-member-home',
@@ -7,9 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberHomeComponent implements OnInit {
 
-  constructor() { }
+  public identity;
+  public token: string;
+
+  constructor( public membersService: MembersService,
+               public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.identity = this.membersService.getIdentity();
+    this.token = this.membersService.getToken();
   }
 
+  openChangeMembership() {
+    const dialogRef = this.dialog.open(ChangeMembershipComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
+  openDialogOffice() {
+    const dialogRef = this.dialog.open(OfficeReservationComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
+  openDialogReunion() {
+    const dialogRef = this.dialog.open(ReunionReservationComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }S
 }

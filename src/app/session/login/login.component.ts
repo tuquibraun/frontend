@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   public identity;
   public token: string;
   public member;
-
   public id;
   public error = null;
 
@@ -22,10 +21,23 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.initVars();
+  }
+
+  initVars() {
+    this.member = new Member('', '', '', '', '', null, '', '');
+    this.identity = this.mService.getIdentity();
+    this.token = this.mService.getToken();
+
+    this.route.queryParams
+      .subscribe(params => {
+        this.id = params;
+      });
   }
 
   // FUNCION PARA LOGUEAR UN USUARIO
-public login() {
+  public login() {
 
   // CONSEGUIMOS DATOS DEL USUARIO IDENTIFICADO
   this.mService.loginMember(this.member).subscribe(

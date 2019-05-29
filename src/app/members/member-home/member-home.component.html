@@ -1,3 +1,76 @@
-<p>
-  member-home works!
-</p>
+
+  <h1>Bienvenido, {{identity.apellido}} {{ identity.nombre }}</h1>
+
+  <!--MEMBRESIAS-->
+  <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Membresia</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+
+        <mat-list >
+            <mat-list-item> Estado<span> <button type="button" color="primary" mat-raised-button>Activo</button> </span>  </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item>Vence <span>  2019-05-20 </span></mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item>Tipo Membresia <span>  VIP</span></mat-list-item>
+
+            <mat-divider></mat-divider>
+       </mat-list>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="openChangeMembership()">Cambiar Membresia</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!--Oficinas-->
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Oficina</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+              <mat-list-item> Horas Usadas  <span> 06:00hs </span></mat-list-item>
+
+              <mat-divider></mat-divider>
+
+              <mat-list-item>Restan Horas  <span> 02:00hs  </span></mat-list-item>
+
+              <mat-divider></mat-divider>
+           </mat-list>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button (click)="openDialogOffice()">Reservar Oficina</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <!--Sala de Reunoines-->
+      <mat-card class="example-card">
+
+        <mat-card-header>
+        <mat-card-title>Sala de Reuniones</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item> Horas Usadas <span>  06:00hs  </span></mat-list-item>
+
+                <mat-divider></mat-divider>
+
+                <mat-list-item> Restan Horas  <span> 02:00hs </span> </mat-list-item>
+
+                <mat-divider></mat-divider>
+        </mat-list>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+        <button mat-button (click)="openDialogReunion()">Reservar Sala</button>
+        </mat-card-actions>
+
+      </mat-card>

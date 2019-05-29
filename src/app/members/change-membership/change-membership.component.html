@@ -1,0 +1,22 @@
+<h1 class="mat-dialog-title">Cambiar Membresia</h1>
+<div class="mat-dialog-content">
+
+    <p>Membresias</p>
+    
+    <mat-form-field>
+
+      <mat-label>{{ selected || 'Sala de Reunion' }}</mat-label>
+      <mat-select [(ngModel)]="selectedValues.membresia">
+        <mat-option *ngFor="let membresia of membresias;" [value]="membresia.value">
+          {{ membresia.value }}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button>Cancelar</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Reservar</button>
+</div>
