@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './global';
 
 @Injectable({
@@ -12,21 +14,21 @@ export class MembersService {
   public identity;
   public token: string;
 
-  constructor(private http: Http) {
+  constructor(private _http: Http) {
 
     this.url = GLOBAL.url;
 
   }
 
-  getUsuarios(usuario) {
+  getUsuarios(member) {
 
-    if (usuario != null) {
+    if (member != null) {
 /*
       const params = JSON.stringify(membresia);
 
       const headers = new Headers({'Content-Type':'application/json'});
 
-      return this.http.get(this.url+'login', params, {headers: headers})
+      return this._http.get(this.url+'login', params, {headers: headers})
                       .map(res => res.json());
       */
     } else {
@@ -36,7 +38,7 @@ export class MembersService {
         'Authorization': this.getToken()
       });
 
-      return this.http.get(this.url + 'usuarios', {headers: headers})
+      return this._http.get(this.url + 'usuarios', {headers: headers})
                       .map(res => res.json());
 
     }
@@ -55,7 +57,7 @@ export class MembersService {
 
     const headers = new Headers({'Content-Type': 'application/json'});
 
-    return this.http.post(this.url + 'login', params, {headers: headers})
+    return this._http.post(this.url + 'login', params, {headers: headers})
                     .map(res => res.json());
 
   }
@@ -66,7 +68,7 @@ export class MembersService {
 
     const headers = new Headers({'Content-Type': 'application/json'});
 
-    return this.http.post(this.url + 'registrar', params, {headers: headers})
+    return this._http.post(this.url + 'registrar', params, {headers: headers})
                     .map(res => res.json());
 
   }
@@ -80,7 +82,7 @@ export class MembersService {
       'Authorization': this.getToken()
     });
 
-    return this.http.post(this.url + 'actualizar-usuario/' + userActualizar._id,
+    return this._http.post(this.url + 'actualizar-member/' + userActualizar._id,
     params, {headers: headers})
                     .map(res => res.json());
 

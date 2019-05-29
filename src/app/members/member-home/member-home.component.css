@@ -1,0 +1,61 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 280px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .alineacion{
+    flex: 1 1 auto;
+  }
+  
+  .mat-toolbar a{
+    display: inline-block;
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  .mat-nav-list a{
+    margin: 10px;
+  }
+  .mat-icon{
+    margin: 10px;
+  }
+  /** CARD */
+  .example-card {
+    max-width: 80%;
+    margin:10%;
+  }
+  
+  .mat-card-header, .mat-card-content, .mat-card-actions {
+    padding: 1%;
+  }
+  .mat-list-item {
+    margin-left: 15%;
+  }
+  .mat-list-item span{
+    margin-right: 35%;
+    margin-left: auto;
+  }
+  .mat-card-header{
+    background: #fd7e14;
+    padding: 20px;
+    color: white;
+  }
+  .example-card.mat-card {
+    padding: 0;
+  }
+  .mat-card-actions{
+    margin-bottom: 15px;
+  }

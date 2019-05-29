@@ -1,3 +1,419 @@
-<p>
-  register works!
-</p>
+<!---------------------------
+----- SECCION REGISTRO ------
+---------------------------->
+
+<section class="section-register container-fluid d-none d-sm-block">
+
+  <h1 class="register-titulo mb-5 ml-5">Conviertete en miembro de <span>One</span>Work</h1>
+  <div class="ui-decor-1 bg-primary"></div><br/>
+
+  <div class="row register-content">
+
+    <div class="col col-md-7 pl-5">
+
+      <!-- MEMBRESIA Y DATOS PERSONALES -->
+
+      <div class="datos-personales register-datos" *ngIf="contador === 0">
+
+        <div class="col-12 mb-4">
+
+          <h5>1 - Elegí tu membresía</h5>
+
+        </div>
+
+        <div class="form-group ml-2">
+
+          <select class="form-control" [(ngModel)]="membresiaElegida" [ngClass]="{'is-invalid':membresiaElegida.nombre === 'error'}">
+            <option [ngValue]="null" [disabled]="true">Elige tu membresía</option>
+            <option *ngFor="let tipo of tiposMembresia" [ngValue]="tipo" class="text-capitalize">{{tipo.nombre}} - {{tipo.importe}} USD </option>
+          </select>
+          <div class="invalid-feedback ml-3" *ngIf="membresiaElegida.nombre === 'error'">
+            El tipo de memresía es obligatorio
+          </div>
+
+        </div>
+
+        <div class="col-12 mb-4 mt-5">
+
+          <h5>2 - Completá tus datos</h5>
+
+        </div>
+
+        <form #registerForm="ngForm" class="row">
+
+          <div class="form-group col-6">
+           <input type="text" required class="form-control" placeholder="Apellido *" #regApellido="ngModel" name="regApellido" [(ngModel)]="usuario.apellido" [ngClass]="{'is-invalid':usuarioAlert.apellido === 'error'}">
+           <div class="invalid-feedback ml-3" *ngIf="usuarioAlert.apellido === 'error'">
+             El apellido es obligatorio
+            </div>
+         </div>
+
+          <div class="form-group col-6">
+            <input type="text" required class="form-control" placeholder="Nombre *" #regNombre="ngModel" name="regNombre" [(ngModel)]="usuario.nombre" [ngClass]="{'is-invalid':usuarioAlert.nombre === 'error'}">
+            <div class="invalid-feedback ml-3" *ngIf="usuarioAlert.nombre === 'error'">
+              El nombre es obligatorio
+            </div>
+          </div>
+
+          <div class="form-group col-6">
+            <input type="email" required class="form-control" placeholder="Email *" #regEmail="ngModel" name="regEmail" [(ngModel)]="usuario.email" [ngClass]="{'is-invalid':usuarioAlert.email === 'error'}">
+            <div class="invalid-feedback ml-3" *ngIf="usuarioAlert.email === 'error'">
+              El email es obligatorio
+            </div>
+          </div>
+
+          <div class="form-group col-6">
+            <input type="number" required class="form-control" placeholder="Telefono *" #regTelefono="ngModel" name="regTelefono" [(ngModel)]="usuario.telefono" [ngClass]="{'is-invalid':usuarioAlert.telefono === 'error'}">
+            <div class="invalid-feedback ml-3" *ngIf="usuarioAlert.telefono === 'error'">
+              El teléfono es obligatorio
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- DATOS DE PAGO -->
+
+      <div class="datos-pago register-datos" *ngIf="contador === 1">
+
+        <div class="col-12 mt-5 mb-2">
+
+          <h5>3 - Modo de pago</h5>
+
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col col-5 pagoTarjeta" (click)="elegirMetodoPago('tarjeta')">
+
+            <h1 class="text-center"> TARJETA </h1>
+
+            <div class="center-images">
+
+              <img src="assets/media/mediosPago/master.svg" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'tarjeta'}">
+              <img src="assets/media/mediosPago/naranja.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'tarjeta'}">
+              <img src="assets/media/mediosPago/visa.svg" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'tarjeta'}">
+
+            </div>
+
+          </div>
+
+          <div class="col col-4 pagoTicket" (click)="elegirMetodoPago('ticket')">
+
+            <h1 class="text-center"> CUPÓN DE PAGO </h1>
+
+            <div class="center-images">
+
+              <img src="assets/media/mediosPago/pagofacil.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'ticket'}">
+              <img src="assets/media/mediosPago/rapipago.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'ticket'}">
+
+            </div>
+
+          </div>
+
+          <div class="col col-3 text-center pagoPrecencial">
+
+            <h1 class="text-center"> PRECENCIAL </h1>
+
+            <img src="assets/media/mediosPago/precencial.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'precencial'}" (click)="elegirMetodoPago('precencial')">
+
+          </div>
+
+          <p *ngIf="metodoPago === 'error'"  class="text-danger ml-3"> * Elegir un método de pago es obligatorio!</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col offset-1 col-3" *ngIf="membresiaElegida.nombre !== null || usuario.apellido !== null || usuario.nombre !== null">
+
+      <div class="resumen">
+
+        <h5>Resumen</h5>
+
+        <div class="row mt-3">
+
+          <div class="col col-12 mt-3" *ngIf="membresiaElegida.nombre != null && membresiaElegida.nombre != 'error'">
+
+            <span class="font-weight-bold text-capitalize">Membresía {{membresiaElegida.nombre}}</span>
+
+          </div>
+
+          <div class="col col-12 mt-3" *ngIf="usuario.nombre || usuario.apellido">
+
+            <span class="font-weight-bold">Nombre: </span> <span>{{usuario.apellido}}, {{usuario.nombre}}</span>
+
+          </div>
+
+          <div class="col col-12 mt-3" *ngIf="usuario.email">
+
+            <span class="font-weight-bold">Email: </span> {{usuario.email}}
+
+          </div>
+
+          <div class="col col-12 mt-3" *ngIf="usuario.telefono">
+
+            <span class="font-weight-bold">Teléfono: </span> <span>{{usuario.telefono}}</span>
+
+          </div>
+
+          <div class="col col-12 mt-3" *ngIf="metodoPago">
+
+            <span class="font-weight-bold">Forma de pago: </span> <span>{{metodoPago}}</span>
+
+          </div>
+
+          <div class="col col-12 mt-5" *ngIf="membresiaElegida.nombre != null && membresiaElegida.nombre != 'error'">
+
+            <span class="font-weight-bold">Total: </span> USD {{membresiaElegida.importe}}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="register-botones mt-4">
+
+        <button type="button" class="btn btn-block" (click)="siguiente()" *ngIf="contador === 0">
+          SIGUIENTE >>
+        </button>
+
+        <div class="row" *ngIf="contador === 1">
+
+          <div class="col-6">
+
+            <button type="button" class="btn btn-block btn-primary mt-5" (click)="atras()">
+            << ATRAS
+            </button>
+
+          </div>
+
+          <div class="col-6">
+
+            <button type="button" class="btn btn-block btn-primary mt-5" (click)="pagar()">
+              PAGAR >>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="section-register-mobile d-block d-sm-none">
+
+  <div class="row mt-5">
+
+    <h1 class="register-titulo mb-5 ml-5">CONVERTITE EN <span> MIEMBRO </span></h1>
+
+  </div>
+
+  <div class="elije-membresia container" *ngIf="contador === 0">
+
+    <ul class="list-group">
+
+      <li *ngFor="let tipo of tiposMembresia"
+          (click)="elegirMembresia(tipo)" [ngClass]="{'membresia-elejida':membresiaElegida.nombre === tipo.nombre}"
+          class="list-group-item">{{tipo.nombre}}  <span>USD {{tipo.importe}}</span></li>
+
+    </ul>
+
+  </div>
+
+  <div class="datos-pago register-datos container" *ngIf="contador === 1">
+
+    <form #registerForm="ngForm" class="row">
+
+      <div class="form-group col-12 mb-4">
+       <input type="text" class="form-control" placeholder="Apellido" #regApellido="ngModel" name="regApellido" [(ngModel)]="usuario.apellido">
+     </div>
+
+      <div class="form-group col-12 mb-4">
+        <input type="text" class="form-control" placeholder="Nombre" #regNombre="ngModel" name="regNombre" [(ngModel)]="usuario.nombre">
+      </div>
+
+      <div class="form-group col-12 mb-4">
+        <input type="email" class="form-control" placeholder="Email" #regEmail="ngModel" name="regEmail" [(ngModel)]="usuario.email">
+      </div>
+
+      <div class="form-group col-12">
+        <input type="number" class="form-control" placeholder="Telefono" #regTelefono="ngModel" name="regTelefono" [(ngModel)]="usuario.telefono">
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="datos-pago register-datos" *ngIf="contador === 2">
+
+    <div class="row">
+
+      <div class="col col-4 pagoTarjeta" (click)="elegirMetodoPago('tarjeta')">
+
+        <p class="text-center"> TARJETA </p>
+
+        <div class="row">
+
+          <div class="col-12">
+            <img src="assets/media/mediosPago/master.svg" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'tarjeta'}">
+          </div>
+
+          <div class="col-12">
+            <img src="assets/media/mediosPago/naranja.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'tarjeta'}">
+          </div>
+
+          <div class="col-12">
+            <img src="assets/media/mediosPago/visa.svg" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'tarjeta'}">
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col col-4 pagoTicket" (click)="elegirMetodoPago('ticket')">
+
+        <p class="text-center"> CUPÓN DE PAGO </p>
+
+        <div class="row">
+
+          <div class="col-12">
+            <img src="assets/media/mediosPago/pagofacil.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'ticket'}">
+          </div>
+
+          <div class="col-12">
+            <img src="assets/media/mediosPago/rapipago.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'ticket'}">
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col col-4 text-center pagoPrecencial">
+
+        <p class="text-center"> PRECENCIAL </p>
+
+        <img src="assets/media/mediosPago/precencial.png" alt="" [ngClass]="{'metodo-elegido':metodoPago === 'precencial'}" (click)="elegirMetodoPago('precencial')">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container resumen" *ngIf="contador === 3">
+
+    <h5>Resumen</h5>
+
+    <div class="row mt-3 ml-1">
+
+      <div class="col col-12 mt-3" *ngIf="membresiaElegida.nombre != null && membresiaElegida.nombre != 'error'">
+
+        <span class="font-weight-bold">Membresía {{membresiaElegida.nombre}}</span>
+
+      </div>
+
+      <div class="col col-12 mt-3" *ngIf="usuario.nombre || usuario.apellido">
+
+        <span class="font-weight-bold">Nombre: </span> <span>{{usuario.apellido}}, {{usuario.nombre}}</span>
+
+      </div>
+
+      <div class="col col-12 mt-3" *ngIf="usuario.email">
+
+        <span class="font-weight-bold">Email: </span> {{usuario.email}}
+
+      </div>
+
+      <div class="col col-12 mt-3" *ngIf="usuario.telefono">
+
+        <span class="font-weight-bold">Teléfono: </span> <span>{{usuario.telefono}}</span>
+
+      </div>
+
+      <div class="col col-12 mt-3" *ngIf="metodoPago">
+
+        <span class="font-weight-bold">Forma de pago: </span> <span>{{metodoPago}}</span>
+
+      </div>
+
+      <div class="col col-12 mt-5" *ngIf="membresiaElegida.nombre != null && membresiaElegida.nombre != 'error'">
+
+        <span class="font-weight-bold">Total: </span> usd {{membresiaElegida.importe}}
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-12 mt-5" *ngIf="contador === 0">
+
+    <button type="button" class="btn btn-block btn-primary mt-5" (click)="siguiente()">
+      SIGUIENTE >>
+    </button>
+
+    <div class="col-12 mt-3 text-center">
+
+      <p>¿Ya tenés cuenta?<a routerLink="/login" class="btn-ir-login"> Login </a></p>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <div class="row" *ngIf="contador === 1 || contador === 2">
+
+      <div class="col-6">
+
+        <button type="button" class="btn btn-block btn-primary mt-5" (click)="atras()">
+        << ATRAS
+        </button>
+
+      </div>
+
+      <div class="col-6">
+
+        <button type="button" class="btn btn-block btn-primary mt-5" (click)="siguiente()">
+          SIGUIENTE >>
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="row" *ngIf="contador === 2">
+
+      <div class="col-6">
+
+        <button type="button" class="btn btn-block btn-primary mt-5" (click)="atras()">
+        << ATRAS
+        </button>
+
+      </div>
+
+      <div class="col-6">
+
+        <button type="button" class="btn btn-block btn-primary mt-5" (click)="siguiente()">
+          PAGAR >>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

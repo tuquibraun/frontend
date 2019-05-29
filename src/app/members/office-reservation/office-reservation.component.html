@@ -1,0 +1,45 @@
+<h1 class="mat-dialog-title"> Reservar Oficina</h1>
+<div class="mat-dialog-content">
+
+    <p>Oficina</p>
+    
+    <mat-form-field>
+
+      <mat-label>{{ selected || 'Oficina' }}</mat-label>
+      <mat-select [(ngModel)]="selectedValues.oficina">
+        <mat-option *ngFor="let oficina of oficinas;" [value]="oficina.value">
+          {{ oficina.value }}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+    <p>Fecha</p>
+
+    <mat-form-field>
+      
+      <input matInput [matDatepicker]="picker" placeholder="Fecha"
+            [(ngModel)]="selectedValues.fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      
+    </mat-form-field>
+
+    <p>Turno</p>
+    
+    <mat-form-field>
+
+        <mat-label>{{ selected || 'Turno' }}</mat-label>
+        <mat-select [(ngModel)]="selectedValues.turno">
+          <mat-option *ngFor="let turno of turnos;" [value]="turno.value">
+            {{ turno.value }}
+          </mat-option>
+        </mat-select>
+  
+      </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button>Cancelar</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Reservar</button>
+</div>

@@ -1,3 +1,31 @@
-<p>
-  member-personal-data works!
-</p>
+ <!--profesion-->
+ <mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><mat-label>{{identity.apellido}} {{ identity.nombre }}</mat-label></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form class="tp-form">
+
+      <mat-form-field class="tp-full-width">
+        <input matInput placeholder="Rubro" value="">
+      </mat-form-field>
+      <mat-form-field class="tp-full-width">
+        <input matInput placeholder="Profesion" value="">
+      </mat-form-field>
+      <mat-form-field class="tp-full-width">
+        <input matInput placeholder="Habilidades" value="">
+      </mat-form-field>
+      <mat-form-field class="tp-full-width">
+        <textarea matInput placeholder="Proyectos previos" value=""></textarea>
+      </mat-form-field>
+
+    </form>
+
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="modificarDatos" >Modificar</button>
+    <button mat-button class="guardar" (click)="guardarDatos">Guardar</button>
+  </mat-card-actions>
+</mat-card>

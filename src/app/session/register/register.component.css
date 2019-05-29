@@ -1,0 +1,210 @@
+
+/* ======= REGISTER ========== */
+
+section.section-register {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 4em;
+  }
+  
+  section.section-register h5 {
+    font-size: 1rem;
+  }
+  
+  .register-titulo span {
+    color: #ff8f04;
+  }
+  
+  .section-register .register-datos {
+    padding: 2em;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3), 5px 5px 10px rgba(0,0,0,0.5);
+  }
+  
+  .section-register .resumen {
+    padding: 2em;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3), 5px 5px 10px rgba(0,0,0,0.5);
+  }
+  
+  .section-register h1, .section-register h5 {
+    font-weight: 700;
+  }
+  
+  .section-register .col {
+    height: 100%;
+    font-size: 0.8rem;
+  }
+  
+  .section-register .resumen .col span:nth-child(2) {
+    text-transform: capitalize;
+  }
+  
+  .section-register .register-botones {
+    padding: 0px 10px;
+  }
+  
+  .section-register .register-botones button {
+    background: #ff8f04;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3), 0px 0px 5px rgba(0,0,0,0.5);
+  }
+  
+  .section-register .elije-membresia {
+    background-color: dimgrey;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .section-register .elije-membresia span:nth-child(1) {
+    text-transform: capitalize;
+    margin-right: 7px;
+  }
+  
+  .section-register .membresia-elejida {
+    background-color: #ff8f04;
+  }
+  
+  .section-register .datos-pago .col h1 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 2em;
+  }
+  
+  .datos-pago .col:nth-child(1), .datos-pago .col:nth-child(2) {
+    margin-bottom: 3em;
+    border-right: 1px solid lightgray;
+  }
+  
+  .section-register img {
+    width: 4.5em;
+    filter: grayscale(100%);
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+  }
+  
+  .pagoTarjeta {
+    cursor: pointer;
+  }
+  
+  .section-register .center-images {
+    margin: auto;
+    display: table;
+  }
+  
+  .section-register .pagoTicket:hover img, .section-register .pagoTarjeta:hover img, .section-register .pagoPrecencial:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+  
+  .section-register .metodo-elegido {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+  
+  .metodosPago .col {
+    border-right: 1px solid gray;
+  }
+  
+  .section-register .login-content {
+    padding-top: 8%;
+  }
+  
+  .section-register .form-group input {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  
+  .section-register ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #96989A;
+  }
+  .section-register ::-moz-placeholder { /* Firefox 19+ */
+    color: #96989A;
+  }
+  .section-register :-ms-input-placeholder { /* IE 10+ */
+    color: #96989A;
+  }
+  .section-register :-moz-placeholder { /* Firefox 18- */
+    color: #96989A;
+  }
+  
+  .section-register .form-control:focus, .section-register .form-control:active {
+    border: 1px solid #ffbe6d;
+    box-shadow: 0 0 0 0.2rem rgba(255, 143, 4,.25);
+  }
+  
+  .section-register .ir-registro {
+    position: absolute;
+    right: 5em;
+    top: 2em;
+  }
+  
+  .section-register .ir-login {
+    position: absolute;
+    left: 4em;
+    top: 2em;
+  }
+  
+  /* ======= REGISTER MOBILE ========== */
+  
+  .section-register-mobile span, .section-register-mobile a {
+    color: #ff8f04;
+  }
+  
+  .section-register-mobile .form-control:focus {
+    border-color: #ff8f04;
+  }
+  
+  .section-register-mobile .btn-primary {
+    background-color: #ff8f04;
+    border-color: #ff8f04;
+  }
+  
+  .section-register-mobile img {
+    width: 3.5em;
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    margin: 10px auto;
+    display: block;
+  }
+  
+  .section-register-mobile .col {
+    padding:0px;
+  }
+  
+  .section-register-mobile .pagoTicket:hover img, .section-register-mobile .pagoTarjeta:hover img, .section-register-mobile .pagoPrecencial:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+  
+  .section-register-mobile .resumen span {
+    color: #212529;
+  }
+  
+  .section-register-mobile li.membresia-elejida {
+    color: white;
+    background-color: #ff8f04 !important;
+  }
+  
+  .section-register-mobile li.membresia-elejida span {
+    color: white;
+  }
+  
+  .section-register-mobile .elije-membresia li {
+    background-color: dimgrey;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .section-register-mobile .elije-membresia li span {
+    float: right;
+  }
+  
