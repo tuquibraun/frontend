@@ -14,13 +14,13 @@ export class MembersService {
   public identity;
   public token: string;
 
-  constructor(private _http: Http) {
+  constructor(private http: Http) {
 
     this.url = GLOBAL.url;
 
   }
 
-  getUsuarios(member) {
+  getMembers(member) {
 
     if (member != null) {
 /*
@@ -28,7 +28,7 @@ export class MembersService {
 
       const headers = new Headers({'Content-Type':'application/json'});
 
-      return this._http.get(this.url+'login', params, {headers: headers})
+      return this.http.get(this.url+'login', params, {headers: headers})
                       .map(res => res.json());
       */
     } else {
@@ -38,51 +38,52 @@ export class MembersService {
         'Authorization': this.getToken()
       });
 
-      return this._http.get(this.url + 'usuarios', {headers: headers})
+      return this.http.get(this.url + 'usuarios', {headers: headers})
                       .map(res => res.json());
 
     }
 
   }
 
-  loginUsuario(userLogin, gethash = null) {
+  loginMember(memberLogin, gethash = null) {
 
     if (gethash != null) {
 
-      userLogin.gethash = gethash;
+      memberLogin.gethash = gethash;
 
     }
 
-    const params = JSON.stringify(userLogin);
+    const params = JSON.stringify(memberLogin);
 
     const headers = new Headers({'Content-Type': 'application/json'});
 
-    return this._http.post(this.url + 'login', params, {headers: headers})
+    return this.http.post(this.url + 'login', params, {headers: headers})
                     .map(res => res.json());
 
   }
 
-  registerUsuario(userRegister) {
+  registerMember(memberRegister) {
 
-    const params = JSON.stringify(userRegister);
+    const params = JSON.stringify(memberRegister);
 
     const headers = new Headers({'Content-Type': 'application/json'});
 
-    return this._http.post(this.url + 'registrar', params, {headers: headers})
+    return this.http.post(this.url + 'registrar', params, {headers: headers})
                     .map(res => res.json());
 
   }
 
-  actualizarUsuario(userActualizar) {
+  updateMember(memberUpdate) {
 
-    const params = JSON.stringify(userActualizar);
+    const params = JSON.stringify(memberUpdate);
 
     const headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     });
 
-    return this._http.post(this.url + 'actualizar-member/' + userActualizar._id,
+    return this.http.post(this.url + 'actualizar-usuario/' + memberUpdate._id,
+
     params, {headers: headers})
                     .map(res => res.json());
 

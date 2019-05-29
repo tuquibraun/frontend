@@ -1,6 +1,6 @@
 <!---------------------------
 ------ SECCION LOGIN -------
----------------------------->
+--------------------------
 <section class="section-login d-none d-sm-block">
 
   <div class="row">
@@ -48,7 +48,7 @@
 
           </div>
 
-          <button (click)="login()" class="btn btn-outline-primary mt-4">Ingresar</button>
+          <a (click)="login()" class="btn btn-transparent-deep-pink btn-small sm-margin-two-all">Ingresar</a>
 
         </form>
 
@@ -59,3 +59,74 @@
   </div>
 
 </section>
+-->
+<!-- start feature section -->
+<section class="p-0 wow fadeIn bg-light-gray full-height">
+
+    <div class="container-fluid height-100">
+
+        <div class="row height-100">
+
+            <div class="col-12 col-lg-5 cover-background wow fadeInLeft md-height-450px"  style="background-image:url('assets/media/login-bg.jpg');">
+
+              <div class="opacity-full bg-ow">
+
+              </div>
+
+            <img class="login-logo" src="assets/media/logo-full.svg" alt="">
+
+          </div>
+
+            <div class="col-12 col-lg-7 padding-five-all md-padding-ten-all sm-padding-50px-tb md-padding-15px-lr wow fadeInRight ">
+
+              <div class="row">
+
+                <a routerLink="/register" class="btn btn-transparent-dark-gray btn-medium margin-30px-bottom margin-l-auto"> Conviertete en miembro </a>
+
+              </div>
+
+                <div class="row">
+
+                  <div class="text-lg-left sm-no-padding w-100">
+
+                    <span class="text-deep-pink alt-font margin-10px-bottom md-no-margin-bottom d-inline-block text-small">Ingrese con su email y contraseña</span>
+
+                    <h4 class="font-weight-600 alt-font text-extra-dark-gray">Inicia Sesión</h4>
+
+                    <form #loginForm="ngForm" class="mt-5">
+
+                      <div class="form-group">
+                        <input type="email" class="imput-medium" placeholder="Email" #email="ngModel" name="email" [(ngModel)]="member.email">
+                      </div>
+
+                      <div class="form-group">
+                        <input type="password" class="imput-medium" placeholder="Contraseña" #password="ngModel" name="password" [(ngModel)]="member.password">
+                      </div>
+
+
+                      <a routerLink="/recuperar-clave"> ¿Olvidaste tu contraseña? </a>
+
+                      <div class="row mt-2">
+
+                        <div class="alert alert-danger" role="alert" *ngIf="error != null">
+                          {{error}}
+                        </div>
+
+                      </div>
+
+                      <a (click)="login()" class="btn btn-transparent-deep-pink btn-small sm-margin-two-all mt-4">Ingresar</a>
+
+                    </form>
+
+                  </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- end feature section -->

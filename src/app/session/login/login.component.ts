@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   public identity;
   public token: string;
   public member;
-
   public id;
   public error = null;
 
@@ -22,13 +21,26 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.initVars();
+  }
+
+  initVars() {
+    this.member = new Member('', '', '', '', '', null, '', '');
+    this.identity = this.mService.getIdentity();
+    this.token = this.mService.getToken();
+
+    this.route.queryParams
+      .subscribe(params => {
+        this.id = params;
+      });
   }
 
   // FUNCION PARA LOGUEAR UN USUARIO
-public login() {
+  public login() {
 
   // CONSEGUIMOS DATOS DEL USUARIO IDENTIFICADO
-  this.mService.loginUsuario(this.member).subscribe(
+  this.mService.loginMember(this.member).subscribe(
 
     response => {
 
@@ -37,7 +49,7 @@ public login() {
 
       if (!this.identity._id) {
 
-        alert('El usuario no esta identificado correctamente');
+        alert('El miembro no esta identificado correctamente');
 
       } else {
 
@@ -45,7 +57,7 @@ public login() {
         localStorage.setItem('identity', JSON.stringify(identity));
 
         // CONSEGUIMOS TOKEN PARA ENVIAR EN PETICIONES HTTP
-        this.mService.loginUsuario(this.member, 'true').subscribe (
+        this.mService.loginMember(this.member, 'true').subscribe (
 
           resp => {
 
