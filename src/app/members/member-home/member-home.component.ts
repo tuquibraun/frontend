@@ -4,6 +4,7 @@ import { OfficeReservationComponent } from '../office-reservation/office-reserva
 import { MatDialog } from '@angular/material';
 import { ReunionReservationComponent } from '../reunion-reservation/reunion-reservation.component';
 import { ChangeMembershipComponent } from '../change-membership/change-membership.component';
+import { MembershipService } from '../../services/membership.service';
 
 @Component({
   selector: 'app-member-home',
@@ -14,13 +15,16 @@ export class MemberHomeComponent implements OnInit {
 
   public identity;
   public token: string;
+  public membership;
 
   constructor( public membersService: MembersService,
+               public membershipService: MembershipService,
                public dialog: MatDialog) { }
 
   ngOnInit() {
     this.identity = this.membersService.getIdentity();
     this.token = this.membersService.getToken();
+    this.membership = this.membershipService.getMembershipTypes(this.identity);
   }
 
   openChangeMembership() {

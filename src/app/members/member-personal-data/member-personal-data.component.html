@@ -8,16 +8,16 @@
     <form class="tp-form">
 
       <mat-form-field class="tp-full-width">
-        <input matInput placeholder="Rubro" value="">
+        <input  matInput name="rubro" placeholder="Rubro" [(ngModel)]="data.rubro" [value]="rubro">
       </mat-form-field>
       <mat-form-field class="tp-full-width">
-        <input matInput placeholder="Profesion" value="">
+        <input  matInput name="profesion" placeholder="Profesion" [(ngModel)]="data.profesion"  [value]="profesion">
       </mat-form-field>
       <mat-form-field class="tp-full-width">
-        <input matInput placeholder="Habilidades" value="">
+        <input  matInput name="habilidades" placeholder="Habilidades" [(ngModel)]="data.habilidades"  [value]="habilidades">
       </mat-form-field>
       <mat-form-field class="tp-full-width">
-        <textarea matInput placeholder="Proyectos previos" value=""></textarea>
+        <textarea  matInput name="proyectos" placeholder="Proyectos previos" [(ngModel)]="data.proyectos"  [value]="proyectos"></textarea>
       </mat-form-field>
 
     </form>
