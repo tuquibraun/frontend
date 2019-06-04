@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { OfficeReservationComponent } from './office-reservation/office-reservation.component';
 import { ReunionReservationComponent } from './reunion-reservation/reunion-reservation.component';
 import { ChangeMembershipComponent } from './change-membership/change-membership.component';
+import { CompleteDataComponent } from './complete-data/complete-data.component';
 
 @NgModule({
-  declarations: [MemberComponent, MemberPersonalDataComponent, MemberProfessionalDataComponent, MemberHomeComponent, OfficeReservationComponent, ReunionReservationComponent, ChangeMembershipComponent],
+  declarations: [MemberComponent, MemberPersonalDataComponent, MemberProfessionalDataComponent, MemberHomeComponent, OfficeReservationComponent, ReunionReservationComponent, ChangeMembershipComponent, CompleteDataComponent],
   imports: [
     CommonModule,
     MaterialModule,

@@ -1,0 +1,25 @@
+<h1 class="mat-dialog-title"> Reservar Oficina</h1>
+<div class="mat-dialog-content">
+
+    <p>Oficina</p>
+    <form class="tp-form">
+
+      <mat-form-field class="tp-full-width">
+        <input  matInput name="rubro" placeholder="Rubro" [(ngModel)]="data.rubro" [value]="rubro">
+      </mat-form-field>
+      <mat-form-field class="tp-full-width">
+        <input  matInput name="profesion" placeholder="Profesion" [(ngModel)]="data.profesion"  [value]="profesion">
+      </mat-form-field>
+      <mat-form-field class="tp-full-width">
+        <input  matInput name="habilidades" placeholder="Habilidades" [(ngModel)]="data.habilidades"  [value]="habilidades">
+      </mat-form-field>
+      <mat-form-field class="tp-full-width">
+        <textarea  matInput name="proyectos" placeholder="Proyectos previos" [(ngModel)]="data.proyectos"  [value]="proyectos"></textarea>
+      </mat-form-field>
+
+    </form>
+
+<div mat-dialog-actions>
+  <button mat-button>Cancelar</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Guardar</button>
+</div>
